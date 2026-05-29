@@ -132,6 +132,14 @@
   .out .od{font-size:13.5px;color:var(--grey);margin-bottom:18px}
   .btn{display:inline-flex;align-items:center;gap:9px;background:var(--teal);color:#fff;text-decoration:none;font-weight:700;font-size:15px;padding:13px 22px;border-radius:11px;border:none;cursor:pointer;transition:.2s;box-shadow:0 10px 24px rgba(0,163,157,.22);width:auto}
   .btn:hover{background:var(--teal-deep);transform:translateY(-1px)}
+  .actions{display:flex;gap:10px;flex-wrap:wrap}
+  .btn.ghost{background:#fff;color:var(--teal-deep);border:1.5px solid var(--teal);box-shadow:none}
+  .btn.ghost:hover{background:var(--wash);transform:none}
+  .subnote{font-size:12.5px;color:var(--grey);margin-top:10px}
+  .substatus{font-size:13.5px;margin-top:8px;display:none}
+  .substatus.show{display:block}
+  .substatus.ok{color:var(--teal-deep);font-weight:700}
+  .substatus.err{color:#8a5a12;font-weight:700}
   table.sum{width:100%;border-collapse:collapse;font-size:13px}
   table.sum th{text-align:left;font-size:11px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;color:var(--grey-2);padding:8px 10px;border-bottom:2px solid var(--line)}
   table.sum td{padding:10px;border-bottom:1px solid var(--line);color:var(--ink);vertical-align:top}
@@ -164,7 +172,7 @@
   @page{margin:14mm}
   @media print{
     header.top,.hero,.back,.addbtn,.anchor-acc,.savehint,.btn,.checkbox-soft,footer .soc,
-    .sec-tag,.sec h2,.sec .sd,.members,.sub-card,.mirror,
+    .sec-tag,.sec h2,.sec .sd,.members,.sub-card,.mirror,.subnote,.substatus,.actions,
     .gridcard h3,.gridcard .gd,.out .oh,.out .od{display:none!important}
     .layout{display:block}
     .panel{position:static}
@@ -201,6 +209,7 @@
     <p class="lede">Petakan kelima anggota tim cabang Anda berdasarkan kemampuan dan kemauan. Hasilnya, Peta Tim Saya, Anda bawa ke Sesi 1 dan dipakai langsung pada Skill Will Matrix serta kartu Lima Orang Satu Target. Diisi sendiri, tidak dinilai, murni alat berpikir untuk persiapan Anda.</p>
     <div class="idrow">
       <div class="f"><label>Nama Branch Manager</label><input id="bmName" placeholder="Nama Anda"></div>
+      <div class="f"><label>NIP <span style="font-weight:400;color:#aaa">(opsional)</span></label><input id="bmNip" placeholder="Nomor pegawai"></div>
       <div class="f"><label>Cabang</label><input id="bmBranch" placeholder="Nama atau kode cabang"></div>
     </div>
   </div>
@@ -298,9 +307,14 @@
   <div class="out" id="out">
     <div class="oh">
       <h3>Peta Tim Saya, siap dibawa ke kelas</h3>
-      <button class="btn" id="printBtn" onclick="window.print()">Cetak atau simpan PDF ›</button>
+      <div class="actions">
+        <button class="btn ghost" id="printBtn" onclick="window.print()">Simpan PDF</button>
+        <button class="btn" id="submitBtn">Kirim Pemetaan ›</button>
+      </div>
     </div>
     <div class="od">Ringkasan ini yang Anda bawa ke Sesi 1. Item akan terisi otomatis dari yang Anda masukkan di atas.</div>
+    <div class="subnote">Kirim Pemetaan akan membagikan data ini ke penyelenggara program untuk analisis tim secara menyeluruh. Simpan PDF untuk arsip pribadi Anda.</div>
+    <div class="substatus" id="subStatus"></div>
     <div id="sumWrap"><p class="empty-note">Belum ada anggota yang lengkap Skill dan Will-nya. Isi dulu di atas.</p></div>
     <h4 class="exh">Catatan persiapan</h4>
     <div id="sumExtras"></div>
@@ -485,6 +499,49 @@
   }
   document.getElementById('printBtn').addEventListener('click',fillPrintHead);
   window.addEventListener('beforeprint',function(){fillPrintHead();renderExtras();});
+
+  // === Pengumpulan data: Unduh CSV & Kirim ke penyelenggara ===
+  var SUBMIT_URL=''; // Penyelenggara mengisi URL Google Apps Script Web App di sini
+  function setStatus(msg, ok){ var s=document.getElementById('subStatus'); s.textContent=msg; s.className='substatus show '+(ok?'ok':'err'); }
+  function buildSubmission(){
+    var bm=document.getElementById('bmName').value.trim(), cab=document.getElementById('bmBranch').value.trim();
+    if(!bm||!cab){ setStatus('Isi dulu Nama Branch Manager dan Cabang di bagian atas.', false); return null; }
+    var done=members.filter(function(m){return quad(m.skill,m.will);});
+    if(!done.length){ setStatus('Lengkapi minimal satu anggota dengan Skill dan Will.', false); return null; }
+    var pd=document.getElementById('pickDelegate'), pdir=document.getElementById('pickDirect');
+    var dName=(pd.value!==''&&members[+pd.value])?members[+pd.value].name:'';
+    var diName=(pdir.value!==''&&members[+pdir.value])?members[+pdir.value].name:'';
+    var u=+document.getElementById('hUrgent').value||0, im=+document.getElementById('hImportant').value||0;
+    var stmts=Array.prototype.map.call(document.querySelectorAll('#stmts .seg'),function(seg){var on=seg.querySelector('button.on');return on?on.textContent:'';});
+    var meta={timestamp:new Date().toISOString(),bm:bm,nip:document.getElementById('bmNip').value.trim(),cabang:cab,paling_siap_dilepas:dName,paling_butuh_diarahkan:diName,jam_mendesak:u,jam_penting:im,delegasi_1:stmts[0]||'',delegasi_2:stmts[1]||'',delegasi_3:stmts[2]||''};
+    var mem=done.map(function(m){var q=quad(m.skill,m.will);return {anggota:m.name,peran:m.role,skill:m.skill,will:m.will,kuadran:q,treatment:TREAT[q].t,bukti:m.ev,tugas:m.task,kekuatan_tersembunyi:m.hidden};});
+    return {meta:meta,members:mem};
+  }
+  var CSV_COLS=['timestamp','bm','nip','cabang','anggota','peran','skill','will','kuadran','treatment','bukti','tugas','kekuatan_tersembunyi','paling_siap_dilepas','paling_butuh_diarahkan','jam_mendesak','jam_penting','delegasi_1','delegasi_2','delegasi_3'];
+  function csvCell(v){v=(v==null?'':String(v)); return /[",\n]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v;}
+  function downloadCSV(){
+    var p=buildSubmission(); if(!p) return;
+    var rows=[CSV_COLS.join(',')];
+    p.members.forEach(function(m){
+      rows.push([p.meta.timestamp,p.meta.bm,p.meta.cabang,m.anggota,m.peran,m.skill,m.will,m.kuadran,m.treatment,m.bukti,m.tugas,m.kekuatan_tersembunyi,p.meta.paling_siap_dilepas,p.meta.paling_butuh_diarahkan,p.meta.jam_mendesak,p.meta.jam_penting,p.meta.delegasi_1,p.meta.delegasi_2,p.meta.delegasi_3].map(csvCell).join(','));
+    });
+    var blob=new Blob(['\ufeff'+rows.join('\r\n')],{type:'text/csv;charset=utf-8'});
+    var url=URL.createObjectURL(blob), a=document.createElement('a');
+    a.href=url; a.download='Peta_Tim_'+(p.meta.cabang||'cabang').replace(/[^A-Za-z0-9]/g,'_')+'.csv';
+    document.body.appendChild(a); a.click(); document.body.removeChild(a); URL.revokeObjectURL(url);
+    setStatus('CSV berhasil diunduh.', true);
+  }
+  function submitData(){
+    var p=buildSubmission(); if(!p) return;
+    if(!SUBMIT_URL){ setStatus('Pengiriman online belum diaktifkan. Sementara ini gunakan Unduh CSV lalu serahkan ke penyelenggara.', false); return; }
+    try{
+      var blob=new Blob([JSON.stringify(p)],{type:'text/plain;charset=UTF-8'});
+      var ok=navigator.sendBeacon&&navigator.sendBeacon(SUBMIT_URL,blob);
+      if(!ok) fetch(SUBMIT_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=UTF-8'},body:JSON.stringify(p)});
+      setStatus('Pemetaan terkirim ke penyelenggara. Terima kasih. Sebaiknya simpan juga PDF sebagai arsip pribadi.', true);
+    }catch(e){ setStatus('Gagal mengirim. Coba lagi, atau gunakan Unduh CSV.', false); }
+  }
+  document.getElementById('submitBtn').addEventListener('click',submitData);
 
   document.getElementById('addBtn').addEventListener('click',function(){
     if(members.length>=8) return;

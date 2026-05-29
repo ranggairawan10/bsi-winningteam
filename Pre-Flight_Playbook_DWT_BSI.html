@@ -127,6 +127,12 @@
   .fb.good{background:var(--wash);color:var(--teal-deep);border-left:3px solid var(--teal)}
   .fb.bad{background:var(--gold-wash);color:#8a5a12;border-left:3px solid var(--gold)}
   .fb b{font-weight:900}
+  .case{margin:0 0 30px}
+  .case-h .case-n{font-size:11px;font-weight:900;letter-spacing:.12em;color:var(--teal);text-transform:uppercase}
+  .case-h h3{font-size:clamp(20px,2.6vw,25px);font-weight:900;color:var(--charcoal);margin:3px 0 10px;line-height:1.15}
+  .case-s{background:var(--wash);border-left:3px solid var(--teal);border-radius:0 14px 14px 0;padding:15px 20px;font-size:15.5px;color:var(--charcoal);margin-bottom:14px;line-height:1.55}
+  .opt .ol{font-weight:900;color:var(--teal);margin-right:7px}
+  .opt.sel.bad .ol{color:var(--gold)}
 
   .reflect{margin:24px 0 4px;border:1px dashed var(--teal-2);border-radius:14px;padding:20px 24px;background:#fff}
   .reflect span{display:block;font-size:12px;font-weight:900;letter-spacing:.16em;color:var(--teal);text-transform:uppercase;margin-bottom:6px}
@@ -244,7 +250,7 @@
   <div class="wrap">
     <a class="chip" href="#a">A · Mindset Primer</a>
     <a class="chip" href="#b">B · Kenali Tim Saya</a>
-    <a class="chip" href="#c">C · Pemanasan Empat Sesi</a>
+    <a class="chip" href="#c">C · Empat Mini Case</a>
     <a class="chip" href="#d">D · Pre-Test</a>
     <a class="chip" href="#e">E · Checklist</a>
   </div>
@@ -408,18 +414,105 @@
 <!-- C -->
 <section class="mod" id="c"><div class="wrap">
   <div class="mhead"><div class="badge">C</div><div>
-    <h2>Pemanasan Empat Sesi</h2>
-    <div class="deckline">Pengantar ringkas empat simulasi dan empat kartu yang akan Anda hadapi.</div>
+    <h2>Empat Mini Case</h2>
+    <div class="deckline">Empat skenario singkat untuk berlatih memutuskan, agar Anda tiba di kelas sudah panas.</div>
   </div></div>
-  <div class="body">
-    <p>Setiap sesi memasangkan satu simulasi pengalaman dengan satu kartu Solve The Case. Berikut gambaran singkatnya, sekadar pemanasan, jawaban tetap Anda garap di kelas.</p>
-    <div class="ses">
-      <div class="row"><div class="sn">1</div><div class="sc"><div class="pair"><span class="sim">Human Machine Challenge</span> + Lima Orang Satu Target</div><div class="goal">Mengatur peran sesuai kekuatan tiap anggota pada cabang dengan SDM terbatas.</div></div></div>
-      <div class="row"><div class="sn">2</div><div class="sc"><div class="pair"><span class="sim">Mission Relay</span> + Peta Kekuatan yang Tersembunyi</div><div class="goal">Menggali potensi anggota yang selama ini hanya diberi tugas rutin.</div></div></div>
-      <div class="row"><div class="sn">3</div><div class="sc"><div class="pair"><span class="sim">Human Knot</span> + Simpul yang Mengikat</div><div class="goal">Mengurai konflik dan memutus ketergantungan tim pada BM.</div></div></div>
-      <div class="row"><div class="sn">4</div><div class="sc"><div class="pair"><span class="sim">Bridge Builders</span> + Akhir Pekan yang Sepi</div><div class="goal">Membangun kolaborasi lintas fungsi dan rasa memiliki target bersama.</div></div></div>
+  <div class="body narrow">
+    <p>Ini bukan ujian dan tidak dinilai. Anggap latihan pemanasan, empat situasi nyata yang akan Anda temui di Solve The Case, masing-masing dengan beberapa keputusan. Pilih satu jawaban, lalu lihat bagaimana seorang arsitek tim menimbangnya. Di kelas Anda menggarapnya lebih dalam bersama tim sungguhan.</p>
+
+    <div class="case">
+      <div class="case-h"><span class="case-n">Sesi 1 · Human Machine Challenge</span><h3>Lima Orang Satu Target</h3></div>
+      <p class="case-s">KCP Anda hanya berisi lima orang, tetapi target dana murah dan pembiayaan sama-sama dikejar. Anda tidak bisa menambah orang. Yang bisa Anda atur adalah bagaimana lima orang ini bergerak.</p>
+      <div class="q"><div class="qn">Keputusan 1</div><div class="qq">Cara paling tepat membagi peran di tim sekecil ini adalah</div>
+        <button class="opt" data-good="1" data-fb="Tepat. Inilah inti Skill-Will, tempatkan orang pada peran yang paling pas dengan kekuatannya agar lima orang bergerak sebagai satu mesin.">memetakan kekuatan tiap orang lalu menempatkannya pada peran yang paling pas</button>
+        <button class="opt" data-good="0" data-fb="Membagi rata terasa adil, tetapi mengabaikan kekuatan masing-masing dan sering membuat semua tugas dikerjakan setengah baik.">membagi semua tugas sama rata agar terasa adil</button>
+        <button class="opt" data-good="0" data-fb="Senioritas belum tentu sejalan dengan kemampuan dan kemauan pada tugas tertentu.">menyerahkan tugas terpenting hanya kepada yang paling senior</button>
+        <button class="opt" data-good="0" data-fb="Mengerjakan sendiri membuat Anda kembali menjadi botol leher dan tim tidak tumbuh.">mengerjakan sendiri bagian tersulit agar cepat selesai</button>
+        <div class="fb"></div></div>
+      <div class="q"><div class="qn">Keputusan 2</div><div class="qq">Satu anggota hangat dan kuat membangun relasi nasabah, tetapi lemah di administrasi. Langkah Anda</div>
+        <button class="opt" data-good="1" data-fb="Betul. Letakkan ia di garis depan relasi, lalu pasangkan dengan rekan yang kuat administrasi. Dua kekuatan saling menutup.">tempatkan di akuisisi dan layanan nasabah, lalu pasangkan dengan rekan yang rapi administrasi</button>
+        <button class="opt" data-good="0" data-fb="Memaksa orang berkutat di titik lemahnya lebih dulu justru memadamkan kekuatan terbaiknya.">paksa ia membereskan kelemahan administrasinya dulu sebelum menemui nasabah</button>
+        <button class="opt" data-good="0" data-fb="Menjauhkan dari nasabah berarti membuang kekuatan terbesarnya.">jauhkan dari nasabah agar tidak ada salah administrasi</button>
+        <button class="opt" data-good="0" data-fb="Menumpuk semua administrasi padanya justru mengarahkannya ke titik terlemah.">bebani ia dengan seluruh administrasi tim</button>
+        <div class="fb"></div></div>
+      <div class="q"><div class="qn">Keputusan 3</div><div class="qq">Target terasa mustahil untuk lima orang. Sikap arsitek tim</div>
+        <button class="opt" data-good="1" data-fb="Ya. Pecah target menjadi peran yang saling melengkapi, sehingga beban dipikul sebagai satu tim, bukan ditanggung sendiri-sendiri.">memecah target menjadi peran yang saling melengkapi dan menggerakkannya sebagai satu tim</button>
+        <button class="opt" data-good="0" data-fb="Menunggu tambahan orang menunda gerak, padahal kekuatan tim belum dioptimalkan.">menunda gerak sampai ada tambahan pegawai</button>
+        <button class="opt" data-good="0" data-fb="Meminta penurunan target tidak menyentuh akar soal, yaitu penataan tim.">langsung meminta penurunan target ke kantor wilayah</button>
+        <button class="opt" data-good="0" data-fb="Membagi sama besar mengabaikan perbedaan kekuatan tiap orang.">membagi angka sama besar ke setiap orang</button>
+        <div class="fb"></div></div>
     </div>
-    <div class="teambox"><b>Satu tim, empat sesi.</b> Anda akan berkenalan dengan satu tim cabang fiktif yang sama di keempat kartu. Cerita mereka mengalir dari sesi ke sesi, sehingga setiap keputusan terasa nyata dan saling tersambung.</div>
+
+    <div class="case">
+      <div class="case-h"><span class="case-n">Sesi 2 · Mission Relay</span><h3>Peta Kekuatan yang Tersembunyi</h3></div>
+      <p class="case-s">Seorang anggota back office yang pendiam selama ini hanya diberi tugas entri data. Anda menduga ada kemampuan lebih yang belum pernah terlihat.</p>
+      <div class="q"><div class="qn">Keputusan 1</div><div class="qq">Langkah pertama untuk menggali potensinya adalah</div>
+        <button class="opt" data-good="1" data-fb="Tepat. Beri tantangan kecil yang terukur lalu amati dan dampingi. Potensi hanya terlihat ketika diberi ruang untuk muncul.">memberi tugas menantang yang terukur, lalu mengamati dan mendampinginya</button>
+        <button class="opt" data-good="0" data-fb="Membiarkannya di tugas rutin memastikan potensinya tetap tak terlihat.">membiarkannya tetap pada tugas rutin yang sama</button>
+        <button class="opt" data-good="0" data-fb="Memberi beban besar tanpa dukungan berisiko mematahkan kepercayaan dirinya.">langsung memberi beban besar tanpa pendampingan</button>
+        <button class="opt" data-good="0" data-fb="Menyimpulkan dari sifat pendiam adalah jebakan halo terbalik, diam bukan berarti tak mampu.">menyimpulkan ia memang terbatas karena pendiam</button>
+        <div class="fb"></div></div>
+      <div class="q"><div class="qn">Keputusan 2</div><div class="qq">Ternyata ia sangat teliti dan cepat memahami produk Tabungan Emas. Tindakan Anda</div>
+        <button class="opt" data-good="1" data-fb="Betul. Kembangkan ia menjadi rujukan Tabungan Emas di cabang dan beri ruang tumbuh. Inilah perhatian individual yang menumbuhkan.">mengembangkannya menjadi rujukan Tabungan Emas dan memberi ruang bertumbuh</button>
+        <button class="opt" data-good="0" data-fb="Mengembalikannya ke entri data menyia-nyiakan kekuatan yang baru ditemukan.">mengembalikannya ke entri data karena sudah terbiasa</button>
+        <button class="opt" data-good="0" data-fb="Menahan informasi demi ego unit bertentangan dengan tumbuhnya orang.">menahan kabar kemampuannya agar tidak diminta unit lain</button>
+        <button class="opt" data-good="0" data-fb="Pujian tanpa peran baru tidak membuat potensinya berbuah.">cukup memujinya tanpa memberi peran baru</button>
+        <div class="fb"></div></div>
+      <div class="q"><div class="qn">Keputusan 3</div><div class="qq">Rekan lain mulai membandingkan diri dengannya. Sikap Anda</div>
+        <button class="opt" data-good="1" data-fb="Ya. Buka jalur tumbuh untuk semua sesuai kekuatan masing-masing, sehingga pengembangan terasa adil dan menular.">membuka jalur tumbuh bagi tiap orang sesuai kekuatannya masing-masing</button>
+        <button class="opt" data-good="0" data-fb="Menghentikan pengembangan demi meredam iri justru mengerdilkan seluruh tim.">menghentikan pengembangannya agar tidak ada yang iri</button>
+        <button class="opt" data-good="0" data-fb="Merahasiakan pengembangan menumbuhkan curiga, bukan kepercayaan.">merahasiakan pengembangan dari anggota lain</button>
+        <button class="opt" data-good="0" data-fb="Keistimewaan tanpa kejelasan dasar memicu kecemburuan yang Anda khawatirkan.">memberinya keistimewaan tanpa menjelaskan dasarnya</button>
+        <div class="fb"></div></div>
+    </div>
+
+    <div class="case">
+      <div class="case-h"><span class="case-n">Sesi 3 · Human Knot</span><h3>Simpul yang Mengikat</h3></div>
+      <p class="case-s">Setiap keputusan kecil menumpuk di meja Anda. Dua anggota berselisih soal pembagian tugas, dan sisa tim menunggu Anda turun tangan sebelum bergerak.</p>
+      <div class="q"><div class="qn">Keputusan 1</div><div class="qq">Akar kemacetan yang sebenarnya adalah</div>
+        <button class="opt" data-good="1" data-fb="Tepat. Ketika semua keputusan harus lewat Anda, tim tidak pernah terbiasa memutus, dan Anda menjadi simpul yang mengikat geraknya.">semua keputusan harus lewat Anda sehingga tim tidak terbiasa memutus sendiri</button>
+        <button class="opt" data-good="0" data-fb="Justru sebaliknya, tim terlalu bergantung, bukan terlalu mandiri.">anggota terlalu mandiri sehingga sulit dikendalikan</button>
+        <button class="opt" data-good="0" data-fb="Tinggi target bukan penyebab keputusan menumpuk di satu meja.">target cabang yang terlalu tinggi bulan ini</button>
+        <button class="opt" data-good="0" data-fb="Sistem mungkin lambat, tetapi akar yang dibahas di sini adalah pola pengambilan keputusan.">sistem teknologi yang lambat memproses transaksi</button>
+        <div class="fb"></div></div>
+      <div class="q"><div class="qn">Keputusan 2</div><div class="qq">Menghadapi dua anggota yang berselisih soal pembagian tugas, Anda sebaiknya</div>
+        <button class="opt" data-good="1" data-fb="Betul. Fasilitasi keduanya menyepakati peran yang jelas. Memutus sepihak hanya menambah satu lapis ketergantungan pada Anda.">memfasilitasi keduanya menyepakati pembagian peran yang jelas</button>
+        <button class="opt" data-good="0" data-fb="Memutus sepihak menyelesaikan gejala, bukan membangun kemampuan tim menyelesaikan konflik.">memutuskan sendiri siapa yang benar agar cepat selesai</button>
+        <button class="opt" data-good="0" data-fb="Membiarkan konflik mereda sendiri kerap membuatnya mengendap dan berulang.">membiarkannya mereda dengan sendirinya</button>
+        <button class="opt" data-good="0" data-fb="Memisahkan tugas tanpa percakapan menutup akar perselisihan, bukan menguraikannya.">memisahkan tugas mereka tanpa membicarakan akarnya</button>
+        <div class="fb"></div></div>
+      <div class="q"><div class="qn">Keputusan 3</div><div class="qq">Agar tim tidak selalu menunggu Anda, langkah yang tepat adalah</div>
+        <button class="opt" data-good="1" data-fb="Ya. Tetapkan jenis keputusan yang boleh mereka ambil sendiri, lalu percayakan sesuai posisi Skill-Will. Anda memindahkan keputusan, bukan menambah beban.">menetapkan keputusan yang boleh mereka ambil sendiri dan mempercayakannya sesuai Skill-Will</button>
+        <button class="opt" data-good="0" data-fb="Mengerjakan approval lebih cepat tetap menjadikan Anda botol leher, hanya yang lebih gesit.">mengerjakan setiap persetujuan lebih cepat agar tidak menumpuk</button>
+        <button class="opt" data-good="0" data-fb="Memperketat pengawasan menambah ketergantungan, bukan menguranginya.">memperketat pengawasan pada semua tugas</button>
+        <button class="opt" data-good="0" data-fb="Tambahan staf belum tentu mungkin dan tidak menyentuh kebiasaan semua keputusan naik ke atas.">meminta tambahan staf agar beban keputusan terbagi</button>
+        <div class="fb"></div></div>
+    </div>
+
+    <div class="case">
+      <div class="case-h"><span class="case-n">Sesi 4 · Bridge Builders</span><h3>Akhir Pekan yang Sepi</h3></div>
+      <p class="case-s">Akhir bulan, target dana murah tertinggal. Tim operasional menyebut itu urusan sales, sementara sales menuding operasional lambat melayani nasabah.</p>
+      <div class="q"><div class="qn">Keputusan 1</div><div class="qq">Sikap pertama seorang arsitek tim adalah</div>
+        <button class="opt" data-good="1" data-fb="Tepat. Tunjukkan bahwa layanan yang cepat dan akuisisi saling terkait, lalu sepakati satu target bersama. Inilah pergeseran dari working group menjadi real team.">menunjukkan keterkaitan layanan dan akuisisi, lalu menyepakati satu target bersama</button>
+        <button class="opt" data-good="0" data-fb="Menekan sales lebih keras mengukuhkan anggapan bahwa target hanya milik satu fungsi.">menekan tim sales agar bekerja lebih keras</button>
+        <button class="opt" data-good="0" data-fb="Menyalahkan satu fungsi memperdalam silo, akar masalah yang ingin diurai.">menyalahkan operasional yang dianggap lamban</button>
+        <button class="opt" data-good="0" data-fb="Menunda hanya memastikan persoalan yang sama berulang bulan depan.">menunda urusan ini sampai bulan depan agar tidak ribut</button>
+        <div class="fb"></div></div>
+      <div class="q"><div class="qn">Keputusan 2</div><div class="qq">Cara menumbuhkan rasa memiliki target di seluruh tim adalah</div>
+        <button class="opt" data-good="1" data-fb="Betul. Jadikan target cabang milik bersama dengan peran tiap fungsi yang jelas, sehingga akuntabilitasnya kolektif.">menjadikan target cabang milik bersama dengan peran tiap fungsi yang jelas</button>
+        <button class="opt" data-good="0" data-fb="Membebankan hanya ke sales mempertahankan silo yang justru ingin Anda bongkar.">membebankan seluruh target hanya kepada tim sales</button>
+        <button class="opt" data-good="0" data-fb="Bonus individu menguatkan kerja sendiri-sendiri, bukan rasa memiliki bersama.">mengandalkan bonus individu sebagai pendorong utama</button>
+        <button class="opt" data-good="0" data-fb="Mengumumkan angka tanpa peran membuat target terasa beban, bukan milik bersama.">mengumumkan angka target tanpa memperjelas peran tiap orang</button>
+        <div class="fb"></div></div>
+      <div class="q"><div class="qn">Keputusan 3</div><div class="qq">Wujud paling konkret dari kolaborasi lintas fungsi di sini adalah</div>
+        <button class="opt" data-good="1" data-fb="Ya. Layanan operasional yang cepat dan ramah ikut menarik serta menahan dana murah, jadi target itu memang dipikul bersama.">layanan operasional yang cepat dan ramah ikut menarik serta menahan dana murah</button>
+        <button class="opt" data-good="0" data-fb="Membatasi operasional pada transaksi memutus kontribusinya pada pertumbuhan dana.">operasional cukup fokus pada transaksi harian saja</button>
+        <button class="opt" data-good="0" data-fb="Sales yang berjalan sendiri kehilangan dukungan layanan yang menahan dana.">tim sales bekerja sendiri tanpa melibatkan operasional</button>
+        <button class="opt" data-good="0" data-fb="Menyerahkan semua ke BM mengembalikan pola botol leher.">menyerahkan seluruh tanggung jawab kepada BM</button>
+        <div class="fb"></div></div>
+    </div>
+
+    <div class="teambox"><b>Sudah panas?</b> Inilah rasa Solve The Case yang menanti di kelas, hanya saja di sana Anda menggarapnya dengan data tim nyata dari Kanvas dan berdebat sehat bersama sesama Branch Manager.</div>
   </div>
 </div></section>
 
@@ -448,7 +541,7 @@
     <ul class="check" id="check">
       <li><span class="box">✓</span><span class="lbl">Hasil ekspor <b>Peta Tim Saya</b> dari Kanvas <span class="star">★</span></span></li>
       <li><span class="box">✓</span><span class="lbl">Data tim cabang: roster dan catatan kinerja tiap anggota</span></li>
-      <li><span class="box">✓</span><span class="lbl">Sudah membaca Mindset Primer dan memanaskan empat sesi</span></li>
+      <li><span class="box">✓</span><span class="lbl">Sudah membaca Mindset Primer dan berlatih Empat Mini Case</span></li>
       <li><span class="box">✓</span><span class="lbl">Sudah menyelesaikan Pre-Test di platform internal BSI</span></li>
       <li><span class="box">✓</span><span class="lbl">Catatan satu refleksi pribadi tentang gaya kepemimpinan Anda</span></li>
     </ul>
@@ -485,14 +578,18 @@
   }));
   document.querySelectorAll('.tcard').forEach(c=>c.addEventListener('click',()=>c.classList.toggle('open')));
   document.querySelectorAll('.eng').forEach(e=>e.addEventListener('click',()=>e.classList.toggle('open')));
-  document.querySelectorAll('#quiz .q').forEach(q=>{
-    const fb=q.querySelector('.fb');
-    q.querySelectorAll('.opt').forEach(o=>o.addEventListener('click',()=>{
-      q.querySelectorAll('.opt').forEach(x=>x.classList.remove('sel','good','bad'));
-      const good=o.dataset.good==='1';
+  document.querySelectorAll('.q').forEach(function(q){
+    var fb=q.querySelector('.fb');
+    var opts=Array.prototype.slice.call(q.querySelectorAll('.opt'));
+    for(var i=opts.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=opts[i];opts[i]=opts[j];opts[j]=t;}
+    var LET=['A','B','C','D','E'];
+    opts.forEach(function(o,idx){ q.insertBefore(o,fb); o.insertAdjacentHTML('afterbegin','<b class="ol">'+LET[idx]+'.</b> '); });
+    opts.forEach(function(o){ o.addEventListener('click',function(){
+      opts.forEach(function(x){x.classList.remove('sel','good','bad');});
+      var good=o.dataset.good==='1';
       o.classList.add('sel',good?'good':'bad');
       fb.textContent=o.dataset.fb; fb.className='fb show '+(good?'good':'bad');
-    }));
+    }); });
   });
   document.querySelectorAll('#check li').forEach(li=>li.addEventListener('click',()=>li.classList.toggle('on')));
 </script>
