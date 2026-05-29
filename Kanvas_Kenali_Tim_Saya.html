@@ -33,7 +33,8 @@
   .lede{font-size:clamp(15px,1.8vw,18px);color:var(--grey);max-width:680px;font-weight:300}
   .idrow{display:flex;gap:14px;flex-wrap:wrap;margin-top:22px}
   .idrow label{font-size:12px;font-weight:700;color:var(--grey);display:block;margin-bottom:5px;letter-spacing:.02em}
-  .idrow .f{flex:1;min-width:200px}
+  .idrow .f{flex:1 1 200px;min-width:180px}
+  .idrow .f.fnip{flex:0 1 200px;min-width:150px}
 
   input,select,textarea{font-family:inherit;font-size:15px;color:var(--charcoal);background:#fff;border:1px solid var(--line);border-radius:10px;padding:11px 13px;width:100%;transition:.15s}
   input:focus,select:focus,textarea:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 3px rgba(0,163,157,.12)}
@@ -209,7 +210,7 @@
     <p class="lede">Petakan kelima anggota tim cabang Anda berdasarkan kemampuan dan kemauan. Hasilnya, Peta Tim Saya, Anda bawa ke Sesi 1 dan dipakai langsung pada Skill Will Matrix serta kartu Lima Orang Satu Target. Diisi sendiri, tidak dinilai, murni alat berpikir untuk persiapan Anda.</p>
     <div class="idrow">
       <div class="f"><label>Nama Branch Manager</label><input id="bmName" placeholder="Nama Anda"></div>
-      <div class="f"><label>NIP <span style="font-weight:400;color:#aaa">(opsional)</span></label><input id="bmNip" placeholder="Nomor pegawai"></div>
+      <div class="f fnip"><label>NIP <span style="font-weight:400;color:#aaa">(opsional)</span></label><input id="bmNip" placeholder="Nomor pegawai"></div>
       <div class="f"><label>Cabang</label><input id="bmBranch" placeholder="Nama atau kode cabang"></div>
     </div>
   </div>
